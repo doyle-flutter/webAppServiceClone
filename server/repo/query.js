@@ -1,20 +1,34 @@
-// [ 구 현 ]
+// [ 하위 세부 구현체 ]
+var {Query} = require('./_query.js'),
+    _conn = require('../configs/_db.js');
 
-var DbQuery = require('./_dbQuery.js');
-var _conn = require('../configs/_db');
-
-// - 공지 DB
-class NotiDB extends DbQuery{
-    read = ( cb ) => {
-        var _sql = `SELECT * FROM ${this.tableName} limit 0, ${this.limitCount};`
-        _conn.query(_sql,(err, results, feilds) => cb(err, results, feilds));
+// - Noti Table Column Model
+class NotiColumn{
+    constructor(){
+        this.id = 'id',
+        this.title = 'title',
+        this.des = 'des',
+        this.name = 'name',
+        this.time = 'time',
+        this.active = 'active';
     }
+    toString = () => `${this.title}, ${this.des}, ${this.name}, ${this.active}`;
+    toValue = () => `?, ?, ?, ?`;
 }
 
-// - 경조사
+// - Noti Query CB
+class NotiDB extends Query{
+    constructor(){
+        super({ tableName: "noti", columns: new NotiColumn(), limitCount: 10 });
+    }
+    _handle = cb => (err, results, feilds) => cb(err, results, feilds);
+    read = cb => _conn.query(this.readSQL(), [], this._handle(cb));
+    readTarget = ({id}) => _conn.query(this.readTargetSQL(), [id], this._handle(cb));
+    create = ({title, des, name, active=1}, cb) => _conn.query(this.createSQL(), [title, des, name, active], this._handle(cb));
+}
 
-// - 메일함
-
-
-// module.exports = {NotiDB};
+// - Events
+// ...
+// - Mail
+// ...
 module.exports = {NotiDB};

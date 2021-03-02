@@ -1,9 +1,9 @@
 // [ 추 상 ]
 module.exports = class DbQuery{
-    constructor({tableName, limitCount, columns}){
-        this.tableName = tableName;
+    constructor({tableName, columns, limitCount}){
+        this.tableName = tableName,
+        this.columns = columns,
         this.limitCount = limitCount;
-        this.columns = columns;
     }
     create = () => this._err();
 
