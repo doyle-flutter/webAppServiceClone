@@ -1,0 +1,68 @@
+/* Reset */
+*{
+    padding: 0;
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+li{
+    list-style: none;
+}
+
+/* (custom) Material Design */
+div.appBar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10vh;
+    background-color: #6200EE;
+    line-height: 10vh;
+    display: flex;
+}
+div.appBar > div.title{
+    flex-grow: 2;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+div.appBar > div.title > img{
+    height: 60px;
+}
+div.appBar > div.leadding{
+    flex-grow: 1;
+}
+div.appBar > div.actions{
+    flex-grow: 1;
+}
+div.appBar > div.actions > ul{
+    display: flex;
+}
+div.appBar > div.actions > ul > li{
+    flex: 1;
+}
+
+div.body{
+    margin-top: 10vh;
+    height: 90vh;
+    overflow: hidden;
+    overflow-x: hidden;
+}
+div.container{
+    flex: 1;
+    text-align: center;
+    vertical-align: middle;
+}
+div.column{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+div.row{
+    display: flex;
+    flex-direction: row;
+}

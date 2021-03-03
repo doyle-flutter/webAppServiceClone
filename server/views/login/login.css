@@ -1,0 +1,18 @@
+input.userid, input.userpw{
+    height: 30px;
+}
+div.column > form{
+    justify-content: space-evenly;
+    flex-direction: column;
+    display: flex;
+    height: 90vh;
+}
+div.container{
+    align-content: center;
+    align-items: center;
+    line-height: 100%;
+}
+input{
+    vertical-align: middle;
+    text-align: center;
+}

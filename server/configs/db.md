@@ -95,3 +95,22 @@
     `time` DATETIME DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`)
 );
+
+- User
+    - Fields
+        id | username | userid | userpw | time | active  
+        -- | -- | -- | -- | -- | --   
+        int | text | text | text | text | bool    
+        O | O | O | O | O | O    
+    -  SQL
+    > CREATE TABLE `user` (
+    `id` INT AUTO_INCREMENT,
+    `username` TEXT NOT NULL,
+    `userid` TEXT NOT NULL,
+    `userpw` TEXT NOT NULL,
+    `active` BOOLEAN NOT NULL,
+    `time` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+);  
+    - TEST SQL
+    > INSERT INTO user (username, userid, userpw, active) VALUES ('테스트 사원1','testuser1','1234',true);

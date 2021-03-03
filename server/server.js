@@ -12,7 +12,10 @@ var express = require('express'),
     io = require('socket.io')(http),
     morgan = require('morgan'),
     port = process.env.PORT || 3003,
-    serverOpenHandle = () => console.log(`SERVER OPEN : ${port}`);
+    serverOpenHandle = () => console.log(`SERVER OPEN : ${port}`),
+    dorender = require('jamessdev-do-render')(app),
+    session = require('express-session'),
+    sessionConfig = require('./configs/_session.js');
 
 app.disable('x-powered-by'); 
 app.listen(port,serverOpenHandle);
@@ -20,6 +23,7 @@ app.listen(port,serverOpenHandle);
 var Routers = {
     mainRouter : require('./routers/mainRouter.js'),
     adminRouter : require('./routers/adminRouter.js'),
+    webRouter : require('./routers/webRouter.js'),
 };
 app.use('*', (req,res,next) => {
     res.header("Cache-Control", "no-cache, no-store, must-revalidate");
@@ -30,10 +34,13 @@ app.use('*', (req,res,next) => {
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
-
+app.use(express.urlencoded({extended:false}));
+app.use(express.static('views'));
+app.use(session(sessionConfig));
 // routers
 app.use('/', Routers.mainRouter);
 app.use('/admin', Routers.adminRouter);
+app.use('/web', Routers.webRouter);
 
 app.get('/favicon.ico', (req, res) => res.sendFile("/Users/doylekim/Downloads/jameshead.png"));
 app.use('*', (req,res) => res.json("noPAGE"));
