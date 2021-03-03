@@ -13,13 +13,25 @@
         <div class="column">
                 <form action="/web/loginprocess" method="POST">
                 <div class="container">
-                    <input type="text" class="userid" name="userid" id="userid" placeholder="사번을 입력해주세요" />
+                    <div>
+                        <input type="text" class="userid" name="userid" id="userid" placeholder="사번을 입력해주세요" />
+                    </div>
                 </div>
                 <div class="container">
-                    <input type="password" class="userpw" name="userpw" id="userpw" placeholder="비밀번호" />
+                    <div>
+                        <input type="password" class="userpw" name="userpw" id="userpw" placeholder="비밀번호" />
+                    </div>
                 </div>
                 <div class="container">
-                    <input type="submit" value="로그인" />
+                    <div>
+                        <input type="submit" value="로그인" class="loginbtn" />
+                    </div>
+                </div>
+                <div class="container">
+                    <ul>
+                        <li>비밀번호 찾기</li>
+                        <li>안내</li>
+                    </ul>
                 </div>
             </form>
         </div>

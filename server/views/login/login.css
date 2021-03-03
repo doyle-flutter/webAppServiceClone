@@ -1,18 +1,28 @@
 input.userid, input.userpw{
-    height: 30px;
+    width: 30%;
+    height: 40px;
+    font-size: 1.4rem;
+    text-align: center;
+}
+input.loginbtn{
+    width: 20%;
+    height: 40px;
+    font-size: 1.4rem;
 }
 div.column > form{
     justify-content: space-evenly;
     flex-direction: column;
     display: flex;
     height: 90vh;
+    align-content: center;
+    vertical-align: middle;
 }
 div.container{
-    align-content: center;
-    align-items: center;
-    line-height: 100%;
-}
-input{
-    vertical-align: middle;
     text-align: center;
+    margin: 10px;
+}
+div.container > div{
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
 }

@@ -7,12 +7,15 @@ router.get('/', (req,res) => {
     return res.render(`${path.join(__dirname, '../views/main/main.do')}`, {logo:"LOGO"});
 });
 
-router.get('/login', (req, res) => res.render(`${path.join(__dirname, '../views/login/login.do')}`));
+router.get('/login', (req, res) => {
+    req.session.destroy();
+    res.render(`${path.join(__dirname, '../views/login/login.do')}`);
+});
 router.post('/loginprocess', (req,res) => {
-    var {userid = undefined, userpw = undefined} = req.body;
-    if(userid == undefined || userpw == undefined) throw 'LoginProcess Params ERR !';
+    var {userid = '', userpw = ''} = req.body;
+    if(userid == '' || userpw == '') throw 'LoginProcess Params ERR !';
     userDB.userMathching({userid, userpw}, (err, results, feilds) => {
-        if(err) return res.json("ID || PW ERROR");
+        if(err || results.length < 1) return res.json("ID || PW ERROR");
         req.session.uid = userid;
         return res.redirect('/web');
     });

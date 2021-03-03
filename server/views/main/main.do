@@ -23,13 +23,13 @@
     </div>
     <div class="body">
         <div class="row">
-            <div class="container">
+            <div class="container" style="flex-grow: 1;">
                 <div class="column">
                     <div class="container userInfo">ID</div>
                     <div class="container mail">MAIL</div>
                 </div>
             </div>
-            <div class="container">
+            <div class="container" style="flex-grow: 2;">
                 <div class="column">
                     <div class="container noti">공지</div>
                     <div class="container event">이벤트 공지</div>
